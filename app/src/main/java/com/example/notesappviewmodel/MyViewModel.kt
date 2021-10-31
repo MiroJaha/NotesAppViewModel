@@ -8,13 +8,8 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
 class MyViewModel(application: Application): AndroidViewModel(application) {
-    private val connection: NotesDoa
-    private val notes: LiveData<List<Data>>
-
-    init {
-        connection= NotesDatabase.getInstance(application).notesDoa()
-        notes= connection.gettingData()
-    }
+    private val connection: NotesDoa = NotesDatabase.getInstance(application).notesDoa()
+    private val notes: LiveData<List<Data>> = connection.gettingData()
 
     fun gettingNotes(): LiveData<List<Data>>{
         return notes
